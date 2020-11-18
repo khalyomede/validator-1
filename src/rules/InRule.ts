@@ -1,8 +1,8 @@
 "use strict";
 
-const {Rule} = require("../Rule.js");
+import { Rule } from "../Rule";
 
-class InRule extends Rule {
+export class InRule extends Rule {
     constructor({attributeName, attributes, translations}) {
         super({attributeName, attributes, ruleName: "in", translations});
     }
@@ -18,5 +18,3 @@ class InRule extends Rule {
         }
     }
 }
-
-exports.InRule = InRule;

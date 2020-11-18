@@ -1,15 +1,15 @@
 "use strict";
 
-const {Rule} = require("../Rule.js");
+import { Rule } from "../Rule";
 
-class StringRule extends Rule {
+export class StringRule extends Rule {
     constructor({attributeName, attributes, translations}) {
         super({attributeName, attributes, ruleName: "string", translations});
     }
 
     validate() {
-        const {attributes, attributeName} = this;
-        const attributeValue = attributes[attributeName];
+        const attributeName = this.attributeName;
+        const attributeValue = this.attributes[attributeName];
 
         if ("string" !== typeof attributeValue) {
             this.error = `${attributeName} should be a string.`;
@@ -17,4 +17,3 @@ class StringRule extends Rule {
     }
 }
 
-exports.StringRule = StringRule;

@@ -1,6 +1,6 @@
 "use strict";
 
-const {Validator} = require("../src/validator.js");
+import { Validator } from "../src/validator";
 
 describe("validator.js", () => {
     it("should return true", () => {

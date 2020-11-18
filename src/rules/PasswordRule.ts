@@ -1,15 +1,15 @@
 "use strict";
 
-const {Rule} = require("../Rule.js");
+import { Rule } from "../Rule";
 
-class PasswordRule extends Rule {
+export class PasswordRule extends Rule {
     constructor({attributeName, attributes, translations}) {
         super({attributeName, attributes, ruleName: "password", translations});
     }
 
     validate() {
-        const {attributes, attributeName} = this;
-        const attributeValue = attributes[attributeName];
+        const attributeName = this.attributeName;
+        const attributeValue = this.attributes[attributeName];
 
         const pattern = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}/u;
 
@@ -18,5 +18,3 @@ class PasswordRule extends Rule {
         }
     }
 }
-
-exports.PasswordRule = PasswordRule;

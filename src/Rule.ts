@@ -1,6 +1,13 @@
 "use strict";
 
-class Rule {
+export class Rule {
+	protected attributeName: string;
+	protected attributes: Record<string, any>;
+	private translations: Record<string, Record<string, string>>;
+	private ruleName: string;
+	protected ruleValue: string;
+	protected error: string;
+
     /**
      * Instanciate a new rule.
      *
@@ -13,7 +20,6 @@ class Rule {
      */
     constructor({attributeName, attributes, ruleName, translations}) {
         this.attributeName = attributeName;
-        this.attributeVale = attributes[attributeName];
         this.attributes = attributes;
         this.translations = translations;
         this.ruleName = ruleName.trim();
@@ -32,7 +38,7 @@ class Rule {
      * rule.match("required");
      * rule.match("same:password");
      */
-    match(rule) {
+    match(rule): boolean {
         const [ruleName, ruleValue] = rule.split(":");
 
         if (this.ruleName === ruleName) {
@@ -54,7 +60,7 @@ class Rule {
      * @example
      * rule.hasError();
      */
-    hasError() {
+    hasError(): boolean {
         this.validate();
 
         return null !== this.error;
@@ -69,7 +75,7 @@ class Rule {
      *
      * rule.getError(); // "The username is required."
      */
-    getError() {
+    getError(): string {
         const {error, translations, attributeName, ruleName} = this;
 
         if (null !== error && "undefined" !== typeof translations[this.attributeName] && "undefined" !== typeof translations[attributeName][ruleName]) {
@@ -77,7 +83,10 @@ class Rule {
         }
 
         return error;
-    }
+	}
+	
+	public validate(): void
+	{
+		// to implement
+	}
 }
-
-exports.Rule = Rule;

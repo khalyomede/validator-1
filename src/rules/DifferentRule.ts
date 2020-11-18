@@ -1,14 +1,14 @@
 "use strict";
 
-const {Rule} = require("../Rule.js");
+import { Rule } from "../Rule";
 
-class DifferentRule extends Rule {
+export class DifferentRule extends Rule {
     constructor({attributeName, attributes, translations}) {
         super({attributeName, attributes, ruleName: "different", translations});
     }
 
     validate() {
-        const {attributes, attributeName, ruleValue} = this;
+		const { attributes, attributeName, ruleValue } = this;
         const attributeValue = attributes[attributeName];
         const differentValue = attributes[ruleValue];
 
@@ -17,5 +17,3 @@ class DifferentRule extends Rule {
         }
     }
 }
-
-exports.DifferentRule = DifferentRule;

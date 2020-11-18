@@ -1,21 +1,24 @@
 "use strict";
 
-const {DateRule} = require("./rules/DateRule.js");
-const {DifferentRule} = require("./rules/DifferentRule.js");
-const {EmailRule} = require("./rules/EmailRule.js");
-const {InRule} = require("./rules/InRule.js");
-const {IntegerRule} = require("./rules/IntegerRule.js");
-const {MaximumRule} = require("./rules/MaximumRule.js");
-const {MinimumRule} = require("./rules/MinimumRule.js");
-const {PasswordRule} = require("./rules/PasswordRule.js");
-const {RequiredRule} = require("./rules/RequiredRule.js");
-const {SameRule} = require("./rules/SameRule.js");
-const {StringRule} = require("./rules/StringRule.js");
+import { DateRule } from "./rules/DateRule";
+import { DifferentRule } from "./rules/DifferentRule";
+import { EmailRule } from "./rules/EmailRule";
+import { InRule } from "./rules/InRule";
+import { IntegerRule } from "./rules/IntegerRule";
+import { MaximumRule } from "./rules/MaximumRule";
+import { MinimumRule } from "./rules/MinimumRule";
+import { PasswordRule } from "./rules/PasswordRule";
+import { RequiredRule } from "./rules/RequiredRule";
+import { SameRule } from "./rules/SameRule";
+import { StringRule } from "./rules/StringRule";
 
 /**
  * Rules for validating an object of values.
  */
-exports.Validator = class Validator {
+export class Validator {
+	private rules: object;
+	private translations: object;
+
     /**
      * Instanciate a new validator.
      *

@@ -1,20 +1,18 @@
 "use strict";
 
-const {Rule} = require("../Rule.js");
+import { Rule } from "../Rule";
 
-class RequiredRule extends Rule {
+export class RequiredRule extends Rule {
     constructor({attributeName, attributes, translations}) {
         super({attributeName, attributes, ruleName: "required", translations});
     }
 
     validate() {
-        const {attributes, attributeName} = this;
-        const attributeValue = attributes[attributeName];
+        const attributeName = this.attributeName;
+        const attributeValue = this.attributes[attributeName];
 
         if ("undefined" === typeof attributeValue || null === attributeValue) {
             this.error = `${attributeName} is required.`;
         }
     }
 }
-
-exports.RequiredRule = RequiredRule;

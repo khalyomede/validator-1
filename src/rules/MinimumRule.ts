@@ -1,14 +1,14 @@
 "use strict";
 
-const {Rule} = require("../Rule.js");
+import { Rule } from "../Rule";
 
-class MinimumRule extends Rule {
+export class MinimumRule extends Rule {
     constructor({attributeName, attributes, translations}) {
         super({attributeName, attributes, ruleName: "minimum", translations});
     }
 
     validate() {
-        const {attributes, attributeName, ruleValue} = this;
+        const { attributes, attributeName, ruleValue } = this;
         const attributeValue = attributes[attributeName];
         const minimumValue = Number(ruleValue);
 
@@ -21,5 +21,3 @@ class MinimumRule extends Rule {
         }
     }
 }
-
-exports.MinimumRule = MinimumRule;

@@ -1,14 +1,14 @@
 "use strict";
 
-const {Rule} = require("../Rule.js");
+import { Rule } from "../Rule";
 
-class MaximumRule extends Rule {
+export class MaximumRule extends Rule {
     constructor({attributeName, attributes, translations}) {
         super({attributeName, attributes, ruleName: "maximum", translations});
     }
 
     validate() {
-        const {attributes, attributeName, ruleValue} = this;
+        const { attributes, attributeName, ruleValue } = this;
         const attributeValue = attributes[attributeName];
         const maximumValue = Number(ruleValue);
 
@@ -24,5 +24,3 @@ class MaximumRule extends Rule {
         }
     }
 }
-
-exports.MaximumRule = MaximumRule;
